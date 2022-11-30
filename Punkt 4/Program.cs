@@ -1,16 +1,24 @@
-﻿Console.WriteLine("Введите элементы массива через запятую");
-Console.WriteLine();
-string str = Console.ReadLine();
-string[] array = str.Split(',');
-var newArray = new string[array.Length];
-var size = 0;
-for (int i = 0; i < array.Length; i++)
+﻿string[] GetArray()
 {
-    if (array[i].Length <= 3)
+    Console.WriteLine("Введите элементы массива через запятую");
+    Console.WriteLine();
+    string? str = Console.ReadLine();
+    string[] array = str.Split(',');
+    return array;
+}
+string[] FormingNewArray(string[] array)
+{
+    string[] newArray = new string[array.Length];
+    int size = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        newArray[size] = array[i];
-        size++;
+        if (array[i].Length <= 3)
+        {
+            newArray[size] = array[i];
+            size++;
+        }
     }
+    return newArray;
 }
 void PrintArray(string[] array)
 {
@@ -21,5 +29,7 @@ void PrintArray(string[] array)
     Console.WriteLine();
     Console.WriteLine();
 }
+string[] array = GetArray();
 Console.WriteLine();
+string[] newArray = FormingNewArray(array);
 PrintArray(newArray);
